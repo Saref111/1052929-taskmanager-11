@@ -14,8 +14,7 @@ export const createEditCardTemplate = () => {
               <textarea
                 class="card__text"
                 placeholder="Start typing your text here..."
-                name="text"
-              >This is example of new task, you can set date and time.</textarea>
+                name="text">This is example of new task, you can set date and time.</textarea>
             </label>
           </div>
 
@@ -32,8 +31,7 @@ export const createEditCardTemplate = () => {
                       class="card__date"
                       type="text"
                       placeholder="23 September"
-                      name="date"
-                    />
+                      name="date"/>
                   </label>
                 </fieldset>
 
@@ -48,74 +46,53 @@ export const createEditCardTemplate = () => {
                       type="checkbox"
                       id="repeat-mo-1"
                       name="repeat"
-                      value="mo"
-                    />
-                    <label class="card__repeat-day" for="repeat-mo-1"
-                      >mo</label
-                    >
+                      value="mo"/>
+                    <label class="card__repeat-day" for="repeat-mo-1">mo</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       id="repeat-tu-1"
                       name="repeat"
                       value="tu"
-                      checked
-                    />
-                    <label class="card__repeat-day" for="repeat-tu-1"
-                      >tu</label
-                    >
+                      checked/>
+                    <label class="card__repeat-day" for="repeat-tu-1">tu</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       id="repeat-we-1"
                       name="repeat"
-                      value="we"
-                    />
-                    <label class="card__repeat-day" for="repeat-we-1"
-                      >we</label
-                    >
+                      value="we"/>
+                    <label class="card__repeat-day" for="repeat-we-1">we</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       id="repeat-th-1"
                       name="repeat"
-                      value="th"
-                    />
-                    <label class="card__repeat-day" for="repeat-th-1"
-                      >th</label
-                    >
+                      value="th"/>
+                    <label class="card__repeat-day" for="repeat-th-1">th</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       id="repeat-fr-1"
                       name="repeat"
                       value="fr"
-                      checked
-                    />
-                    <label class="card__repeat-day" for="repeat-fr-1"
-                      >fr</label
-                    >
+                      checked/>
+                    <label class="card__repeat-day" for="repeat-fr-1">fr</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       name="repeat"
                       value="sa"
-                      id="repeat-sa-1"
-                    />
-                    <label class="card__repeat-day" for="repeat-sa-1"
-                      >sa</label
-                    >
+                      id="repeat-sa-1"/>
+                    <label class="card__repeat-day" for="repeat-sa-1">sa</label>
                     <input
                       class="visually-hidden card__repeat-day-input"
                       type="checkbox"
                       id="repeat-su-1"
                       name="repeat"
                       value="su"
-                      checked
-                    />
-                    <label class="card__repeat-day" for="repeat-su-1"
-                      >su</label
-                    >
+                      checked/>
+                    <label class="card__repeat-day" for="repeat-su-1">su</label>
                   </div>
                 </fieldset>
               </div>
@@ -130,61 +107,46 @@ export const createEditCardTemplate = () => {
                   class="card__color-input card__color-input--black visually-hidden"
                   name="color"
                   value="black"
-                  checked
-                />
+                  checked/>
                 <label
                   for="color-black-1"
-                  class="card__color card__color--black"
-                  >black</label
-                >
+                  class="card__color card__color--black">black</label>
                 <input
                   type="radio"
                   id="color-yellow-1"
                   class="card__color-input card__color-input--yellow visually-hidden"
                   name="color"
-                  value="yellow"
-                />
+                  value="yellow"/>
                 <label
                   for="color-yellow-1"
-                  class="card__color card__color--yellow"
-                  >yellow</label
-                >
+                  class="card__color card__color--yellow">yellow</label>
                 <input
                   type="radio"
                   id="color-blue-1"
                   class="card__color-input card__color-input--blue visually-hidden"
                   name="color"
-                  value="blue"
-                />
+                  value="blue"/>
                 <label
                   for="color-blue-1"
-                  class="card__color card__color--blue"
-                  >blue</label
-                >
+                  class="card__color card__color--blue">blue</label>
                 <input
                   type="radio"
                   id="color-green-1"
                   class="card__color-input card__color-input--green visually-hidden"
                   name="color"
-                  value="green"
-                />
+                  value="green"/>
                 <label
                   for="color-green-1"
-                  class="card__color card__color--green"
-                  >green</label
-                >
+                  class="card__color card__color--green">green</label>
                 <input
                   type="radio"
                   id="color-pink-1"
                   class="card__color-input card__color-input--pink visually-hidden"
                   name="color"
-                  value="pink"
-                />
+                  value="pink"/>
                 <label
                   for="color-pink-1"
-                  class="card__color card__color--pink"
-                  >pink</label
-                >
+                  class="card__color card__color--pink">pink</label>
               </div>
             </div>
           </div>
