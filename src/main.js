@@ -4,6 +4,7 @@ import {createSiteFilterTemplate} from "./components/filter.js";
 import {createLoadButtonTemplate} from "./components/load-button.js";
 import {createSiteMenuTemplate} from "./components/menu.js";
 import {createSiteSortingElement} from "./components/sorting.js";
+import {generateFilters} from "./mock/filter.js";
 
 const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
@@ -11,9 +12,10 @@ const render = (container, template, place = `beforeend`) => {
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
+const filters = generateFilters();
 
 render(siteHeaderElement, createSiteMenuTemplate());
-render(siteMainElement, createSiteFilterTemplate());
+render(siteMainElement, createSiteFilterTemplate(filters));
 render(siteMainElement, createSiteSortingElement());
 
 const siteBoardElement = siteMainElement.querySelector(`.board`);
