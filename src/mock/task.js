@@ -16,9 +16,7 @@ const defaultRepeatingDays = {
   "su": false,
 };
 
-const getRandomInt = (min, max) => {
-  return min + Math.floor(Math.random() * (max - min));
-};
+const getRandomInt = (min, max) => min + Math.floor(Math.random() * (max - min));
 
 const getRandomArrayItem = (arr) => {
   const randomIndex = getRandomInt(0, arr.length);
@@ -56,8 +54,6 @@ const generateTask = () => {
   };
 };
 
-const generateTasks = (count) => {
-  return new Array(count).fill(``).map(generateTask);
-};
+const generateTasks = (count) => new Array(count).fill(``).map(generateTask);
 
 export {generateTask, generateTasks};
