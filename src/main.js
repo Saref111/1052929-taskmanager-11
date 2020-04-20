@@ -21,21 +21,23 @@ const tasks = generateTasks(TASK_COUNT);
 
 const renderTask = (taskListElement, task) => {
   const editButtonClickHandler = () => {
-    taskListElement.replace(taskEditComponent.getElement(), taskComponent.getElement());
+    taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
   };
 
   const formSubmitHandler = (evt) => {
     evt.preventDefault();
-    taskListElement.replace(taskComponent.getElement(), taskEditComponent.getElement());
+    taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
   };
 
-  const taskComponent = new TaskComponent();
+  const taskComponent = new TaskComponent(task);
   const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
   editButton.addEventListener(`click`, editButtonClickHandler);
 
   const taskEditComponent = new TaskEditComponent(task);
   const editForm = taskEditComponent.getElement().querySelector(`form`);
   editForm.addEventListener(`submit`, formSubmitHandler);
+
+  render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
 };
 
 const renderBoard = (boardComponent, tasksArr) => {
@@ -69,4 +71,7 @@ const renderBoard = (boardComponent, tasksArr) => {
 
 render(siteHeaderElement, new MenuComponent().getElement(), RenderPosition.BEFOREEND);
 render(siteMainElement, new FilterComponent(filters).getElement(), RenderPosition.BEFOREEND);
-renderBoard();
+
+const boardComponent = new BoardComponent();
+render(siteMainElement, boardComponent.getElement(), RenderPosition.BEFOREEND);
+renderBoard(boardComponent, tasks);
