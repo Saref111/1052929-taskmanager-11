@@ -6,6 +6,7 @@ import MenuComponent from "./components/menu.js";
 import SortComponent from "./components/sort.js";
 import BoardComponent from "./components/board.js";
 import TasksComponent from "./components/tasks.js";
+import NoTasksComponent from "./components/no-task.js";
 import {generateTasks} from "./mock/task.js";
 import {generateFilters} from "./mock/filter.js";
 import {render, RenderPosition} from "./utils.js";
@@ -55,6 +56,13 @@ const renderTask = (taskListElement, task) => {
 };
 
 const renderBoard = (boardComponent, tasksArr) => {
+  const isAllTasksArchived = tasksArr.every((task) => task.isArchive);
+
+  if (isAllTasksArchived) {
+    render(boardComponent.getElement(), new NoTasksComponent().getElement(), RenderPosition.BEFOREEND);
+    return;
+  }
+
   render(boardComponent.getElement(), new SortComponent().getElement(), RenderPosition.BEFOREEND);
   render(boardComponent.getElement(), new TasksComponent().getElement(), RenderPosition.BEFOREEND);
 
