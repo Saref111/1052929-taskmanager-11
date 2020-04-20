@@ -20,22 +20,36 @@ const filters = generateFilters();
 const tasks = generateTasks(TASK_COUNT);
 
 const renderTask = (taskListElement, task) => {
-  const editButtonClickHandler = () => {
+  const replaceTaskToEdit = () => {
     taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
   };
 
-  const formSubmitHandler = (evt) => {
-    evt.preventDefault();
+  const replaceEditToTask = () => {
     taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
+  };
+
+  const EscKeydownHandler = (evt) => {
+    const isEsc = evt.key === `Escape` || evt.key === `Esc`;
+
+    if (isEsc) {
+      replaceEditToTask();
+      document.removeEventListener(`keydown`, EscKeydownHandler);
+    }
   };
 
   const taskComponent = new TaskComponent(task);
   const editButton = taskComponent.getElement().querySelector(`.card__btn--edit`);
-  editButton.addEventListener(`click`, editButtonClickHandler);
+  editButton.addEventListener(`click`, () => {
+    replaceTaskToEdit();
+    document.addEventListener(`keydown`, EscKeydownHandler);
+  });
 
   const taskEditComponent = new TaskEditComponent(task);
   const editForm = taskEditComponent.getElement().querySelector(`form`);
-  editForm.addEventListener(`submit`, formSubmitHandler);
+  editForm.addEventListener(`submit`, () => {
+    replaceEditToTask();
+    document.removeEventListener(`keydown`, EscKeydownHandler);
+  });
 
   render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
 };
