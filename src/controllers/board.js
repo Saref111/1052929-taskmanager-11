@@ -42,10 +42,6 @@ const renderTask = (taskListElement, task) => {
   render(taskListElement, taskComponent, RenderPosition.BEFOREEND);
 };
 
-const renderBoard = (boardComponent, tasksArr) => {
-
-};
-
 export default class BoardController {
   constructor(container) {
     this._container = container;
