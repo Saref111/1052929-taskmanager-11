@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractComponent from "./abstract-component.js";
 
 const createFilterMarkup = (filters, isChecked) => {
   const {name, count} = filters;
@@ -24,26 +24,14 @@ const createSiteFilterTemplate = (filters) => {
 };
 
 
-export default class Filter {
+export default class Filter extends AbstractComponent {
   constructor(filters) {
-    this._filters = filters;
+    super();
 
-    this._element = null;
+    this._filters = filters;
   }
 
   getTemplate() {
     return createSiteFilterTemplate(this._filters);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
