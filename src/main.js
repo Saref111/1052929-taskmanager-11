@@ -9,7 +9,7 @@ import TasksComponent from "./components/tasks.js";
 import NoTasksComponent from "./components/no-task.js";
 import {generateTasks} from "./mock/task.js";
 import {generateFilters} from "./mock/filter.js";
-import {render, RenderPosition} from "./utils/render.js";
+import {render, RenderPosition, replace} from "./utils/render.js";
 
 const TASK_COUNT = 22;
 const SHOWING_TASKS_COUNT_ON_START = 8;
@@ -52,19 +52,19 @@ const renderTask = (taskListElement, task) => {
     document.removeEventListener(`keydown`, EscKeydownHandler);
   });
 
-  render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
+  render(taskListElement, taskComponent, RenderPosition.BEFOREEND);
 };
 
 const renderBoard = (boardComponent, tasksArr) => {
   const isAllTasksArchived = tasksArr.every((task) => task.isArchive);
 
   if (isAllTasksArchived) {
-    render(boardComponent.getElement(), new NoTasksComponent().getElement(), RenderPosition.BEFOREEND);
+    render(boardComponent.getElement(), new NoTasksComponent(), RenderPosition.BEFOREEND);
     return;
   }
 
-  render(boardComponent.getElement(), new SortComponent().getElement(), RenderPosition.BEFOREEND);
-  render(boardComponent.getElement(), new TasksComponent().getElement(), RenderPosition.BEFOREEND);
+  render(boardComponent.getElement(), new SortComponent(), RenderPosition.BEFOREEND);
+  render(boardComponent.getElement(), new TasksComponent(), RenderPosition.BEFOREEND);
 
   const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
 
@@ -74,7 +74,7 @@ const renderBoard = (boardComponent, tasksArr) => {
   });
 
   const loadButtonComponent = new LoadButtonComponent();
-  render(boardComponent.getElement(), loadButtonComponent.getElement(), RenderPosition.BEFOREEND);
+  render(boardComponent.getElement(), loadButtonComponent, RenderPosition.BEFOREEND);
 
   loadButtonComponent.getElement().addEventListener(`click`, () => {
     const prevTaskCount = showingTasksCount;
@@ -91,9 +91,9 @@ const renderBoard = (boardComponent, tasksArr) => {
   });
 };
 
-render(siteHeaderElement, new MenuComponent().getElement(), RenderPosition.BEFOREEND);
-render(siteMainElement, new FilterComponent(filters).getElement(), RenderPosition.BEFOREEND);
+render(siteHeaderElement, new MenuComponent(), RenderPosition.BEFOREEND);
+render(siteMainElement, new FilterComponent(filters), RenderPosition.BEFOREEND);
 
 const boardComponent = new BoardComponent();
-render(siteMainElement, boardComponent.getElement(), RenderPosition.BEFOREEND);
+render(siteMainElement, boardComponent, RenderPosition.BEFOREEND);
 renderBoard(boardComponent, tasks);
