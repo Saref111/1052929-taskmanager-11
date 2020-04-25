@@ -1,15 +1,6 @@
-const castTimeFormat = (value) => `0${value}`.slice(-2);
-
 export const RenderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`
-};
-
-export const formatTime = (date) => {
-  const hours = castTimeFormat(date.getHours() % 12);
-  const minutes = castTimeFormat(date.getMinutes());
-
-  return `${hours}:${minutes}`;
 };
 
 export const createElement = (template) => {
@@ -29,3 +20,5 @@ export const render = (container, element, place) => {
       break;
   }
 };
+
+
