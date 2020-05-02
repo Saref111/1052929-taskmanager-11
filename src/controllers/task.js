@@ -22,7 +22,7 @@ export default class TaskController {
     this._taskEditComponent = new TaskEditComponent(task);
     this._taskEditComponent.setSubmitHandler(() => {
       this._replaceEditToTask();
-      document.removeEventListener(`keydown`, EscKeydownHandler);
+      document.removeEventListener(`keydown`, this._escKeydownHandler);
     });
 
     render(this._container, this._taskComponent, RenderPosition.BEFOREEND);
