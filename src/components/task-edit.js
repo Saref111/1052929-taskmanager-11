@@ -18,7 +18,7 @@ const createColorMarkup = (colors, currentColor) => {
           ${currentColor === color ? `checked` : ``}
       />
       <label
-          for="${color}-${index}"
+          for="color-${color}-${index}"
           class="card__color card__color--${color}">${color}</label
       >`
     );
@@ -34,7 +34,7 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
           type="checkbox"
           id="repeat-${day}-${index}"
           name="repeat"
-          value="mo"
+          value="${day}"
           ${isChecked ? `checked` : ``}
       />
       <label
@@ -84,7 +84,7 @@ const createTaskEditTemplate = (task, options = {}) => {
           <div class="card__details">
             <div class="card__dates">
               <button class="card__date-deadline-toggle" type="button">
-                date: <span class="card__date-status">yes</span>
+                date: <span class="card__date-status">${isDateShowing ? `yes` : `no`}</span>
               </button>
 
               ${isDateShowing ? `<fieldset class="card__date-deadline">
