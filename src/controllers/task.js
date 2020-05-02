@@ -14,12 +14,21 @@ export default class TaskController {
 
   render(task) {
     this._taskComponent = new TaskComponent(task);
+    this._taskEditComponent = new TaskEditComponent(task);
+
     this._taskComponent.setEditButtonClickHandler(() => {
       this._replaceTaskToEdit();
       document.addEventListener(`keydown`, this._escKeydownHandler);
     });
 
-    this._taskEditComponent = new TaskEditComponent(task);
+    this._taskComponent.setArchiveButtonClickHandler(() => {
+
+    });
+
+    this._taskComponent.setFavoritesButtonClickHandler(() => {
+
+    });
+
     this._taskEditComponent.setSubmitHandler(() => {
       this._replaceEditToTask();
       document.removeEventListener(`keydown`, this._escKeydownHandler);
