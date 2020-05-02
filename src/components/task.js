@@ -5,7 +5,7 @@ import AbstractComponent from "./abstract-component.js";
 const createButtonMarkup = (name, isActive = true) => {
   return (
     `<button type="button" class="card__btn card__btn--${name} ${isActive ? `` : `card__btn--disabled`}">
-      archive
+    ${name}
     </button>`
   );
 };
@@ -79,7 +79,7 @@ export default class Task extends AbstractComponent {
     this.getElement().querySelector(`.card__btn--edit`).addEventListener(`click`, handler);
   }
 
-  setFavoritesButtonHandler(handler) {
+  setFavoritesButtonClickHandler(handler) {
     this.getElement().querySelector(`.card__btn--favorites`).addEventListener(`click`, handler);
   }
 
