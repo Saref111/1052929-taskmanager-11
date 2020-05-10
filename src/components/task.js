@@ -20,7 +20,7 @@ const createTaskTemplate = (task) => {
   const time = isDateShowing ? formatTime(dueDate) : ``;
 
   const editButton = createButtonMarkup(`edit`);
-  const archiveButton = createButtonMarkup(`archive`, !task.isActive);
+  const archiveButton = createButtonMarkup(`archive`, !task.isArchive);
   const favoritesButton = createButtonMarkup(`favorites`, !task.isFavorite);
 
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
