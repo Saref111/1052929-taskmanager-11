@@ -34,4 +34,8 @@ export default class Filter extends AbstractComponent {
   getTemplate() {
     return createSiteFilterTemplate(this._filters);
   }
+
+  setFilterChangeHandler(handler) {
+    
+  }
 }
