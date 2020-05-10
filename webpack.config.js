@@ -26,4 +26,4 @@ module.exports = {
       localesToKeep: [`es-us`]
     })
   ]
-}
+};

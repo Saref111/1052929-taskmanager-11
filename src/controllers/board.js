@@ -52,8 +52,10 @@ export default class BoardController {
     this._onDataChange = this._onDataChange.bind(this);
     this._onSortTypeChange = this._onSortTypeChange.bind(this);
     this._onViewChange = this._onViewChange.bind(this);
+    this._onFilterChange = this._onFilterChange.bind(this);
 
     this._sortComponent.setSortTypeChangeHandler(this._onSortTypeChange);
+    this._tasksModel.setFilterChangeHandler(this._onFilterChange);
   }
 
   render() {
@@ -76,6 +78,19 @@ export default class BoardController {
     this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
 
     this._renderLoadButton();
+  }
+
+  _renderTasks(tasks) {
+    const taskListElement = this._tasksComponent.getElement();
+
+    const newTasks = renderTasks(taskListElement, tasks, this._onDataChange, this._onViewChange);
+    this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
+    this._showingTasksCount = this._showedTaskControllers.length;
+  }
+
+  _removeTasks() {
+    this._showedTaskControllers.forEach((taskController) => taskController.destroy());
+    this._showedTaskControllers = [];
   }
 
   _renderLoadButton() {
@@ -117,11 +132,17 @@ export default class BoardController {
     const newTasks = renderTasks(taskListElement, sortedTasks, this._onDataChange, this._onViewChange);
     this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
 
-    this._renderLoadMoreButton();
+    this._renderLoadButton();
   }
 
   _onViewChange() {
     this._showedTaskControllers.forEach((it) => it.setDefaultView());
+  }
+
+  _updateTasks(count) {
+    this._removeTasks();
+    this._renderTasks(this._tasksModel.getTasks().slice(0, count));
+    this._renderLoadButton();
   }
 
   _onDataChange(taskController, oldData, newData) {
@@ -130,5 +151,9 @@ export default class BoardController {
     if (isSuccess) {
       taskController.render(newData);
     }
+  }
+
+  _onFilterChange() {
+    this._updateTasks(SHOWING_TASKS_COUNT_ON_START);
   }
 }

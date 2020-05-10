@@ -46,6 +46,10 @@ export default class Tasks {
     this._callHandlers(this._filterChangeHandlers);
   }
 
+  setFilterChangeHandler(handler) {
+    this._filterChangeHandlers.push(handler);
+  }
+
   _callHandlers(handlers) {
     handlers.forEach((handler) => handler());
   }
