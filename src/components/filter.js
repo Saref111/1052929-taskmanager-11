@@ -43,7 +43,7 @@ export default class Filter extends AbstractComponent {
 
   setFilterChangeHandler(handler) {
     this.getElement().addEventListener(`change`, (evt) => {
-      const filterName = evt.target.id;
+      const filterName = getFilterNameById(evt.target.id);
       handler(filterName);
     });
   }
