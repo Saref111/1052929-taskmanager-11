@@ -131,8 +131,8 @@ export default class BoardController {
 
     taskListElement.innerHTML = ``;
 
-    const newTasks = renderTasks(taskListElement, sortedTasks, this._onDataChange, this._onViewChange);
-    this._showedTaskControllers = this._showedTaskControllers.concat(newTasks);
+    this._removeTasks()
+    this._renderTasks(sortedTasks);
 
     this._renderLoadButton();
   }
