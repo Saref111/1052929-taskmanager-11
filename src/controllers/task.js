@@ -36,7 +36,7 @@ export default class TaskController {
     this._taskComponent = null;
     this._taskEditComponent = null;
 
-    this._escKeydownHandler = this._escKeydownHandler(this);
+    this._onEscKeyDown = this._onEscKeyDown.bind(this);
   }
 
   render(task, mode) {
@@ -49,7 +49,7 @@ export default class TaskController {
 
     this._taskComponent.setEditButtonClickHandler(() => {
       this._replaceTaskToEdit();
-      document.addEventListener(`keydown`, this._escKeydownHandler);
+      document.addEventListener(`keydown`, this._onEscKeyDown);
     });
 
     this._taskComponent.setArchiveButtonClickHandler(() => {
@@ -68,7 +68,6 @@ export default class TaskController {
       evt.preventDefault();
       const data = this._taskEditComponent.getData();
       this._onDataChange(this, task, data);
-      document.removeEventListener(`keydown`, this._escKeydownHandler);
     });
 
     this._taskEditComponent.setDeleteButtonClickHandler(() => this._onDataChange(this, task, null));
@@ -113,7 +112,7 @@ export default class TaskController {
   }
 
   _replaceEditToTask() {
-    document.removeEventListener(`keydown`, this._escKeydownHandler);
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
     this._taskEditComponent.reset();
 
     if (document.contains(this._taskEditComponent.getElement())) {

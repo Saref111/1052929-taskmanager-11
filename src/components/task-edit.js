@@ -145,6 +145,7 @@ const createTaskEditTemplate = (task, options = {}) => {
 const parseFormData = (formData) => {
   const repeatingDays = DAYS.reduce((acc, day) => {
     acc[day] = false;
+    return acc;
   }, {});
   const date = formData.get(`date`);
 

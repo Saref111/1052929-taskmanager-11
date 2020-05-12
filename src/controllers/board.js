@@ -185,7 +185,7 @@ export default class BoardController {
       const isSuccess = this._tasksModel.updateTasks(oldData.id, newData);
 
       if (isSuccess) {
-        taskController.render(newData);
+        taskController.render(newData, TaskControllerMode.DEFAUL);
       }
     }
   }

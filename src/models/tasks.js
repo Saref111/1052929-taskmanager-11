@@ -28,7 +28,7 @@ export default class Tasks {
     this._callHandlers(this._dataChangeHandlers);
   }
 
-  removeTasks(id) {
+  removeTask(id) {
     const index = this._tasks.findIndex((it) => it.id === id);
 
     if (index === -1) {
